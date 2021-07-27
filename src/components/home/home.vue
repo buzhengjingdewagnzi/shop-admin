@@ -4,11 +4,7 @@
       <el-row>
         <el-col :span="4">
           <div class="grid-content bg-purple">
-            <img
-              class="logo"
-              src=""
-              alt=""
-            />
+            <img class="logo" src="" alt="" />
           </div>
         </el-col>
         <el-col :span="18" class="middle"><span>电商管理平台</span> </el-col>
@@ -21,13 +17,14 @@
     </el-header>
     <el-container>
       <el-aside class="aside" width="200px">
-        <el-menu default-active="2" unique-opened="turn">
+        <!-- 开启路由模式 -->
+        <el-menu default-active="2" router="turn" unique-opened="turn">
           <el-submenu index="1">
             <template slot="title">
               <i class="el-icon-user-solid"></i>
               <span>用户管理</span>
             </template>
-            <el-menu-item index="1-1">
+            <el-menu-item index="users">
               <i class="el-icon-menu"></i>
               <span>用户列表</span>
             </el-menu-item>
@@ -86,7 +83,9 @@
           </el-submenu>
         </el-menu>
       </el-aside>
-      <el-main class="main"> Main </el-main>
+      <el-main class="main">
+        <router-view></router-view>
+      </el-main>
     </el-container>
   </el-container>
 </template>
@@ -105,12 +104,12 @@ export default {
     console.log("bbbb");
   },
   methods: {
-      handleSignout(){
-          //清除token
-          localStorage.clear()
-          this.$message.success('退出成功')
-          this.$router.push({ name: "login" });
-      }
+    handleSignout() {
+      //清除token
+      localStorage.clear();
+      this.$message.success("退出成功");
+      this.$router.push({ name: "login" });
+    },
   },
 };
 </script>
@@ -124,22 +123,22 @@ export default {
   background: #ffffff;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
-    .logo {
-    margin-top: 10px;
-    }
-    .middle {
-    text-align: center;
-    line-height: 60px;
-    font-size: 25px;
-    font-weight: bold;
-    color: #000000;
-    }
-    .logout {
-    text-decoration: none;
-    color: black;
-    text-align: center;
-    line-height: 60px;
-    }
+.logo {
+  margin-top: 10px;
+}
+.middle {
+  text-align: center;
+  line-height: 60px;
+  font-size: 25px;
+  font-weight: bold;
+  color: #000000;
+}
+.logout {
+  text-decoration: none;
+  color: black;
+  text-align: center;
+  line-height: 60px;
+}
 .aside {
   background: #ffffff;
 }

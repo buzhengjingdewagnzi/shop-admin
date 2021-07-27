@@ -1,0 +1,86 @@
+<template>
+  <div class="box">
+      <!-- 面包屑 -->
+      <!-- 首页》用户管理》用户列表 -->
+    <el-breadcrumb separator-class="el-icon-arrow-right">
+      <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
+      <el-breadcrumb-item>用户管理</el-breadcrumb-item>
+      <el-breadcrumb-item>用户列表</el-breadcrumb-item>
+    </el-breadcrumb>
+    <!-- 搜索框 -->
+    <el-row class="searchrow">
+        <el-col>
+          <el-input placeholder="请输入内容" v-model='query' class="inputSearch">
+            <el-button slot="append" icon="el-icon-search"></el-button>
+          </el-input>
+           <el-button type="success" plain>添加用户</el-button>
+        </el-col>
+    </el-row>
+    <!-- 表格 -->
+      <el-table
+      :data="tableData"
+      style="width: 100%">
+      <el-table-column
+        type="index"
+        label="#"
+        width="60">
+      </el-table-column>
+      <el-table-column
+        prop="name"
+        label="姓名"
+        width="180">
+      </el-table-column>
+      <el-table-column
+        prop="emil"
+        label="邮箱">
+      </el-table-column>
+      <el-table-column
+        prop="address"
+        label="电话">
+      </el-table-column>
+      <el-table-column
+        prop="address"
+        label="创建时间">
+      </el-table-column>
+      <el-table-column
+        prop="address"
+        label="用户状态">
+      </el-table-column>
+      <el-table-column
+        prop="address"
+        label="操作">
+      </el-table-column>
+    </el-table>
+  </div>
+</template>
+<script>
+export default {
+  data() {
+    return {
+      query:'',
+      tableData: [{
+            id: '1',
+            name: '王小虎',
+            address: '上海市普陀区金沙江路 1518 弄'
+          }]
+    }
+  },
+  created() {
+    getUserList()
+  },
+  methods: {
+   
+  },
+};
+</script>
+<style>
+.box {
+  height: 100%;
+}
+.inputSearch{
+  width: 300px;
+}
+.searchrow{
+  margin-top: 20px;
+}
+</style>
