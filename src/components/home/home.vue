@@ -98,10 +98,8 @@ export default {
     const token = localStorage.getItem("token");
 
     if (!token) {
-      console.log("aaa");
       this.$router.push({ name: "login" });
     }
-    console.log("bbbb");
   },
   methods: {
     handleSignout() {
