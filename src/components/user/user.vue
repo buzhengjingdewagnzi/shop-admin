@@ -31,6 +31,7 @@
     <!-- 表格 -->
     <el-table
       class="table"
+      stripe
       :data="userList"
       max-height="460"
       style="width: 100%"
@@ -372,9 +373,6 @@ export default {
     },
     //获取数据的方法
     getUserList() {
-      //设置请求头
-      const AUTH_TOKEN = localStorage.getItem("token");
-      this.$http.defaults.headers.common["Authorization"] = AUTH_TOKEN;
       this.$http
         .get(
           `users?query=${this.query}&pagenum=${this.pagenum}&pagesize=${this.pagesize}`
