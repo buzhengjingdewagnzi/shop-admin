@@ -95,10 +95,10 @@ export default {
   //获取token
   //判断
   beforeCreate() {
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem('token');
 
     if (!token) {
-      this.$router.push({ name: "login" });
+      this.$router.push({ name: 'login' });
     }
   },
   methods: {

@@ -17,7 +17,7 @@
           autocomplete="off"
         ></el-input>
       </el-form-item>
-      <el-button @click.prevent="handleLogin()" class="login-btn" type="primary"
+      <el-button @click.prevent="handleLogin()" class="login-btn" type="success"
         >登录</el-button
       >
     </el-form>
