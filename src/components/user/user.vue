@@ -36,7 +36,7 @@
       max-height="460"
       style="width: 100%"
     >
-      <el-table-column type="index" label="#" width="60"> </el-table-column>
+      <el-table-column type="index" label="#" width="100"> </el-table-column>
       <el-table-column prop="username" label="姓名" width="180">
       </el-table-column>
       <el-table-column prop="email" label="邮箱"> </el-table-column>

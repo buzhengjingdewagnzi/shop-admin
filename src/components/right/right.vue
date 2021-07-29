@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="box">
     <!-- 面包屑 -->
     <!-- 首页》权限管理》权限列表 -->
     <!-- <my-bread></my-bread> -->
@@ -20,14 +20,13 @@
       ></el-table-column>
       <el-table-column prop="path" label="路径" :width="columnwidth">
       </el-table-column>
-      <el-table-column prop="level" label="星级" :width="columnwidth">
+      <el-table-column prop="level" label="星级" >
         <template slot-scope="scope">
           <span v-if="scope.row.level==='0'"> 一级</span>
           <span v-if="scope.row.level==='1'"> 二级</span>
           <span v-if="scope.row.level==='2'"> 三级</span>
         </template>
       </el-table-column>
-      <el-table-column> </el-table-column>
     </el-table>
   </div>
 </template>
@@ -41,10 +40,10 @@ export default {
     };
   },
   created() {
-    this.getAuthorityList();
+    this.getRightList();
   },
   methods: {
-    getAuthorityList() {
+    getRightList() {
       this.$http.get(`rights/list`).then((res) => {
         this.rightList = res.data.data;
       });
@@ -54,6 +53,9 @@ export default {
 </script>
 
 <style>
+.box {
+  height: 100%;
+}
 .table {
   margin-top: 10px;
 }
