@@ -1,27 +1,3 @@
-# shop-admin
-
-> A Vue.js project
-
-## Build Setup
-
-``` bash
-# install dependencies
-npm install
-
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
-
-# run e2e tests
-npm run e2e
-
-# run all tests
-npm test
-```
-
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+### 技术栈 vue+vue-router+axios
+### 插件 TreeTable(表格树形结构)+moment(日期处理插件)+quillEditor(富文本编辑器)+echarts(图表)
+### UI库 ElementUI
