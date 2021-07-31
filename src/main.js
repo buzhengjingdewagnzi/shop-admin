@@ -9,6 +9,7 @@ import 'element-ui/lib/theme-chalk/index.css'
 import '@/assets/css/reset.css'
 import router from './router/index'
 import moment from 'moment'
+import TreeTable from "vue-table-with-tree-grid";
 
 // Vue.prototype.$http = axios
 Vue.use(ElementUI)
@@ -19,7 +20,7 @@ Vue.config.productionTip = false
 Vue.filter('fmtdate',(v)=>{
   return moment(v).format('YYYY-MM-DD')
 })
-
+Vue.component('tree-table', TreeTable)
 Vue.component('my-bread',MyBread)
 
 /* eslint-disable no-new */

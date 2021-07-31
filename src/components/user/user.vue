@@ -2,11 +2,7 @@
   <div class="box">
     <!-- 面包屑 -->
     <!-- 首页》用户管理》用户列表 -->
-    <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-      <el-breadcrumb-item>用户管理</el-breadcrumb-item>
-      <el-breadcrumb-item>用户列表</el-breadcrumb-item>
-    </el-breadcrumb>
+    <my-bread class="bread" level1="用户管理" level2="用户列表"></my-bread>
     <!-- 搜索框 -->
     <el-row class="searchrow">
       <el-col>
@@ -31,7 +27,6 @@
     <!-- 表格 -->
     <el-table
       class="table"
-      stripe
       :data="userList"
       max-height="460"
       style="width: 100%"
@@ -173,7 +168,7 @@
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
-        <el-button @click="dialogFormVisibleUpdate = false">取 消</el-button>
+        <el-button @click="Cancel">取 消</el-button>
         <el-button type="success" @click="updateUser">确 定</el-button>
       </div>
     </el-dialog>
@@ -183,8 +178,8 @@
         <el-form-item label="用户名" :label-width="formLabelWidth">
           {{ currUsername }}
         </el-form-item>
-        <el-form-item label="角色名" :label-width="formLabelWidth">
-          {{currRoleId}}
+        <el-form-item label="角色" :label-width="formLabelWidth">
+          {{ currRoleId }}
           <el-select v-model="currRoleId" placeholder="请分配用户权限">
             <el-option disabled label="请选择" :value="-1"></el-option>
             <el-option
@@ -223,8 +218,8 @@ export default {
       formLabelWidth: "100px",
       //角色权限ID
       currRoleId: -1,
-      currUserId:-1,
-      currUsername:'',
+      currUserId: -1,
+      currUsername: "",
       roles: [],
       //表单数据
       form: {
@@ -240,6 +235,10 @@ export default {
     this.getUserList();
   },
   methods: {
+    Cancel() {
+      this.dialogFormVisibleUpdate = false;
+      this.getUserList();
+    },
     //弹出修改用户权限对话框
     showSetUserRole(user) {
       this.dialogFormVisibleRole = true;
@@ -247,16 +246,15 @@ export default {
       this.currUserId = user.id;
       this.$http.get(`users/${this.currUserId}`).then((res) => {
         this.currRoleId = res.data.data.rid;
-        console.log(res)
       });
       this.$http.get(`roles`).then((res) => {
-        console.log(res)
         this.roles = res.data.data;
       });
     },
     //修改用户权限
     setUserRole() {
       this.dialogFormVisibleRole = false;
+      console.log(this.currRoleId);
       this.$http
         .put(`users/${this.currUserId}/role`, { rid: this.currRoleId })
         .then((res) => {
@@ -290,8 +288,9 @@ export default {
             message: msg,
           });
         } else {
+          this.getUserList();
           this.$message({
-            type: "success",
+            type: "warning",
             message: msg,
           });
         }
@@ -334,7 +333,6 @@ export default {
     addUser() {
       this.dialogFormVisibleAdd = false;
       this.$http.post(`users`, this.form).then((res) => {
-        console.log(res);
         const {
           meta: { status, msg },
           data,
@@ -412,6 +410,6 @@ export default {
   margin-top: 10px;
 }
 .pagination {
-  margin-top: 5px;
+  margin-top: 15px;
 }
 </style>
